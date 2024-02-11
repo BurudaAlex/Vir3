@@ -1,0 +1,79 @@
+swagger: '2.0'
+info:
+  title: Yama API
+  description: Documentation for Yama (Перевал) API
+  version: '1.0'
+basePath: /api
+schemes:
+  - http
+paths:
+  /submitData:
+    post:
+      tags:
+        - Passes
+      summary: Submit data about a pass
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: data
+          description: Data about the pass
+          schema:
+            type: object
+            properties:
+              beauty_title:
+                type: string
+              title:
+                type: string
+              add_time:
+                type: string
+                format: date-time
+              user:
+                type: object
+                properties:
+                  email:
+                    type: string
+                  fam:
+                    type: string
+                  name:
+                    type: string
+                  otc:
+                    type: string
+                  phone:
+                    type: string
+              coords:
+                type: object
+                properties:
+                  latitude:
+                    type: number
+                  longitude:
+                    type: number
+                  height:
+                    type: integer
+              level:
+                type: object
+                properties:
+                  winter:
+                    type: string
+                  summer:
+                    type: string
+                  autumn:
+                    type: string
+                  spring:
+                    type: string
+              images:
+                type: array
+                items:
+                  type: string
+      responses:
+        200:
+          description: Successfully submitted
+          schema:
+            type: object
+            properties:
+              status:
+                type: integer
+              message:
+                type: string
+              id:
+                type: integer
